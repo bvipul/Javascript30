@@ -16,31 +16,52 @@
       p.style.color = '#BADA55';
       p.style.fontSize = '50px';
     }
-
+    
+    let a = "Full Stack Expert";;
     // Regular
-
+    console.log("simple logger");
     // Interpolated
-
+    console.log(`This is huge accomplishment: ${a}`);
     // Styled
-
+    console.log('%c what a string this is', 'font-size: 45px');
     // warning!
-
+    console.warn("Hello");
     // Error :|
-
+    console.error("Error");
     // Info
-
+    console.info("1 new notification");
     // Testing
-
+    console.assert(a == 3, "This is wrong");
     // clearing
-
+    console.clear();
     // Viewing DOM Elements
-
+    const p = document.querySelector('p');
+    console.log(p);
+    console.dir(p);
     // Grouping together
-
+    dogs.forEach(dog => {
+        console.group(`${dog.name}`);
+        console.log(`This is ${dog.name}`);
+        console.log(`I am ${dog.age} years old.`);
+        console.groupEnd(`${dog.name}`);
+    })
     // counting
-
+    console.count(a);
+    console.count(a);
+    console.count(a);
+    console.count(a);
+    console.count(a);
+    console.count(a);
+    console.count(a);
+    console.count(a);
+    console.count(a);
+    
     // timing
-
+    console.time(`abc`);
+    setTimeout(() => {
+        console.log('some task');
+        console.timeEnd(`abc`);
+    }, 1500);
   </script>
 </body>
 </html>
