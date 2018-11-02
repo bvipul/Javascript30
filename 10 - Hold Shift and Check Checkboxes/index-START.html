@@ -99,6 +99,61 @@
   </div>
 
 <script>
+    let shifted = false;
+    
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let first = null, last = null;
+    
+    checkboxes.forEach(box => {
+        box.onclick = (e) => {
+            console.log("clicked");
+            let firstIndex, lastIndex;
+            if(!shifted) {
+                first = e.currentTarget;
+                last = null;
+            } else {
+                if(first) {
+                    last = e.currentTarget;
+                    
+                    firstIndex = [...checkboxes].findIndex((check) => check == first);
+                    lastIndex = [...checkboxes].findIndex((check) => check == last);
+                    
+                    if(firstIndex <= lastIndex) {
+                        for(let i = firstIndex; i <= lastIndex; i++) {
+                            checkboxes[i].checked = true;
+                        }
+                    } else {
+                        console.log('here', lastIndex, firstIndex);
+                        for(let i = firstIndex; i >= lastIndex; i--) {
+                            console.log('here');
+                            checkboxes[i].checked = true;
+                        }
+                    }
+                }
+            }
+            console.log(first, last, firstIndex, lastIndex);
+        };
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if(e.shiftKey) {
+            shifted = true;
+        }
+    });
+    
+    document.addEventListener('keyup', (e) => {
+        if(e.shiftKey) {
+            shifted = false;
+        }
+    });
+    
+    document.addEventListener('mouseup', (e) => {
+        console.log("mouseup");
+    });
+    
+    document.addEventListener('mousedown', () => {
+        console.log("mousedown");
+    });
 </script>
 </body>
 </html>
